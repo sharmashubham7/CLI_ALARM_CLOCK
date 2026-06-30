@@ -42,7 +42,6 @@ alarm clock — commands: set HH:MM [label] | list | quit
 > set 07:30 wake up
 set 'wake up' for 07:30 (rings in 9h 12m)
 > set 06:00 gym
-set 'gym' for 06:00 (rings in 7h 42m)   # already passed today → rolls to tomorrow
 > list
   06:00  gym  (rings in 7h 42m)
   07:30  wake up  (rings in 9h 12m)
@@ -52,16 +51,6 @@ set 'gym' for 06:00 (rings in 7h 42m)   # already passed today → rolls to tomo
 If you set a time that has already passed today, it automatically rolls to the
 next day, so an alarm always points at its next future occurrence.
 
-## Running the tests
-
-```bash
-python alarm.py test
-```
-
-The test suite covers the pure logic — which alarms are due, countdown
-formatting, and time parsing including malformed input and the roll-to-tomorrow
-boundary. It runs in milliseconds because the current time is injected into the
-core functions rather than read from the system clock (see Design notes).
 
 ## Design notes
 
